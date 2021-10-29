@@ -1,0 +1,21 @@
+steamKey: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+mods:
+- screepsmod-auth
+- screepsmod-admin-utils
+- screepsmod-mongo
+- screepsmod-history
+- screepsmod-dynamicmarket
+bots:
+  simplebot: screepsbot-zeswarm
+  overbot: screeps-bot-overmind
+  angelbot: screeps-bot-tooangel
+serverConfig:
+  map: random_2x2
+  welcomeText:  |
+    <h1 style="text-align: center;">H3O+ Server</h1>
+  shardName: 'H3O+ Shard'
+  tickRate: 1200
+  gclToCPU: true
+  maxCPU: 100
+  baseCPU: 20
+  stepCPU: 10

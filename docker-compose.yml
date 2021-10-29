@@ -1,0 +1,40 @@
+version: '3'
+services:
+  screeps:
+    build: .
+    volumes:
+      # - ./init.sh:/init.sh
+      - ./config.yml:/screeps/config.yml
+      - screeps-data:/screeps
+    ports:
+      - 21025:21025/tcp
+    environment:
+      MONGO_HOST: mongo
+      REDIS_HOST: redis
+    restart: unless-stopped
+
+  mongo:
+    image: mongo
+    command: --quiet
+    volumes:
+      - mongo-data:/data/db
+    restart: unless-stopped
+
+  redis:
+    image: redis
+    volumes:
+      - redis-data:/data
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - 80:80
+      - 443:443
+
+volumes:
+  redis-data:
+  mongo-data:
+  screeps-data:

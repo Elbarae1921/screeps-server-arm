@@ -5,7 +5,7 @@ services:
     volumes:
       # - ./init.sh:/init.sh
       - ./config.yml:/screeps/config.yml
-      - ./docker-volumes/screeps-data:/screeps
+      - screeps-data:/screeps
     ports:
       - 21025:21025/tcp
     environment:
@@ -17,13 +17,13 @@ services:
     image: mongo
     command: --quiet
     volumes:
-      - ./docker-volumes/mongo-data:/data/db
+      - mongo-data:/data/db
     restart: unless-stopped
 
   redis:
     image: redis
     volumes:
-      - ./docker-volumes/redis-data:/data
+      - redis-data:/data
     restart: unless-stopped
 
 volumes:

@@ -10,11 +10,11 @@ bots:
   overbot: screeps-bot-overmind
   angelbot: screeps-bot-tooangel
 serverConfig:
-  map: random_2x2
+  map: random_1x1
   welcomeText:  |
     <h1 style="text-align: center;">H3O+ Server</h1>
   shardName: 'H3O+ Shard'
-  tickRate: 1200
+  tickRate: 1000
   gclToCPU: true
   maxCPU: 100
   baseCPU: 20

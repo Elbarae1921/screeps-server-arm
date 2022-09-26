@@ -1,9 +1,9 @@
 version: '3'
 services:
   screeps:
-    build: .
+    container_name: screeps
+    image: elbarae/screeps-launcher-arm
     volumes:
-      # - ./init.sh:/init.sh
       - ./config.yml:/screeps/config.yml
       - screeps-data:/screeps
     ports:
@@ -14,27 +14,27 @@ services:
     restart: unless-stopped
 
   mongo:
+    container_name: screeps-mongo
     image: mongo
     command: --quiet
     volumes:
-      - mongo-data:/data/db
+      - ./docker-volumes/mongo-data:/data/db
     restart: unless-stopped
 
   redis:
+    container_name: screeps-redis
     image: redis
     volumes:
-      - redis-data:/data
+      - ./docker-volumes/redis-data:/data
     restart: unless-stopped
 
-  nginx:
-    image: nginx:latest
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
-    ports:
-      - 80:80
-      - 443:443
+  # nginx:
+  #   image: nginx:latest
+  #   volumes:
+  #     - ./nginx.conf:/etc/nginx/nginx.conf
+  #   ports:
+  #     - 80:80
+  #     - 443:443
 
 volumes:
-  redis-data:
-  mongo-data:
   screeps-data:
